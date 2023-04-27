@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+  <button (click)="onAcceptAll()">Accept All</button>
+  <button (click)="onRejectAll()">Reject All</button>
+  <div *ngFor="let field of fields">
+    <label>{{ field.label }}</label>
+    <input
+      type="checkbox"
+      [formControlName]="field.id + '_accept'"
+      (change)="onCheckboxChange(field.id, 'accept')"
+    />
+    <label for="{{ field.id }}_accept">Accept</label>
+    <input
+      type="checkbox"
+      [formControlName]="field.id + '_reject'"
+      (change)="onCheckboxChange(field.id, 'reject')"
+    />
+    <label for="{{ field.id }}_reject">Reject</label>
+  </div>
+
+  <button (click)="onSubmit()">Submit</button>
+</form>
